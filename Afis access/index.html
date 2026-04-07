@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AFIS ID #</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background: #000;
+        overflow: hidden;
+      }
+      #video-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        pointer-events: none;
+        overflow: hidden;
+      }
+      #form-container {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        font-family: 'Bold Courier New', sans-serif;
+        color: #fff;
+        font-size: 50px;
+        margin-top: 100px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+      }
+      #password-input {
+        width: 500px;
+        height: 50px;
+        font-size: 24px;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        margin-bottom: 10px;
+      }
+      #submit-button {
+        background: #a9a9a9;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 20px;
+        cursor: pointer;
+        box-shadow: 0px 1px 1px #111111;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+      #submit-button:hover {
+        background: #999;
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- Video Background -->
+    <div class="iv-player_responsive_padding" style="padding:56.25% 0 0 0;position:relative;" data-hash="67bc96362a4fe">
+      <div class="iv-player_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+        <div class="iv-player_embed iv-player_async_p2z7746nud videoFoam=true" style="height:100%;position:relative;width:100%">
+          <iframe
+            src="https://videosuite-player.vercel.app/?hash=67bc96362a4fe&amp;apiUrl=https://videosuite.app&amp;analyticsUrl=https://api.vidanalytics.io&amp;appEnv=live"
+            width="100%"
+            height="100%"
+            frameborder="none"
+            class="_vs_ictr_player"
+            id="67bc96362a4fe"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+
+    <!-- Password Form -->
+    <div id="form-container">
+      <form id="password-form" onsubmit="return checkPassword();">
+        <label for="password-input"></label><br>
+        <input type="text" id="password-input" name="password" autofocus placeholder="                        ENTER AFIS ID #"><br>
+        <button type="submit" id="submit-button">Submit</button>
+      </form>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+      function normalizePassword(input) {
+        return input.toLowerCase().replace(/o/g, "0").trim();
+      }
+
+      function checkPassword() {
+        var password = normalizePassword(document.getElementById("password-input").value);
+        var passwordLinks = {
+          "88965": "https://afis-results-rb.rkirk.workers.dev/",
+          "38796": "https://afis-results-pjl.rkirk.workers.dev/",
+          "65986": "https://afis-results-kd.rkirk.workers.dev/",
+          "49698": "https://afis-results-ch.rkirk.workers.dev/",
+          "50741": "https://afis-results-un.rkirk.workers.dev/",
+          "28596": "https://afis-results-bc.rkirk.workers.dev/",
+          "2517963": "https://afis-results-wp.rkirk.workers.dev/",
+          "89289": "https://afis-results-un.rkirk.workers.dev/",
+          "16356": "https://afis-results-lt.rkirk.workers.dev/"
+          "02812": "https://afis-results-ch.rkirk.workers.dev/"
+        };
+
+        if (passwordLinks[password]) {
+          window.open(passwordLinks[password], "_blank");
+        } else {
+          window.open("https://glowing-florentine-5d7b74.netlify.app/", "_blank");
+        }
+        return false; // Prevent form submission
+      }
+    </script>
+  </body>
+</html>

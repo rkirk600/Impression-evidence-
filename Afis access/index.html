@@ -29,6 +29,7 @@
         font-size: 50px;
         margin-top: 100px;
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+        z-index: 10;
       }
       #password-input {
         width: 500px;
@@ -53,19 +54,35 @@
       #submit-button:hover {
         background: #999;
       }
+
+      /* Make the video actually fill the screen */
+      .iv-player_responsive_padding,
+      .iv-player_responsive_wrapper,
+      .iv-player_embed,
+      ._vs_ictr_player {
+        position: fixed !important;
+        top: 0;
+        left: 0;
+        width: 100vw !important;
+        height: 100vh !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        border: none;
+        z-index: 0;
+      }
     </style>
   </head>
   <body>
 
     <!-- Video Background -->
-    <div class="iv-player_responsive_padding" style="padding:56.25% 0 0 0;position:relative;" data-hash="67bc96362a4fe">
-      <div class="iv-player_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
-        <div class="iv-player_embed iv-player_async_p2z7746nud videoFoam=true" style="height:100%;position:relative;width:100%">
+    <div class="iv-player_responsive_padding" data-hash="67bc96362a4fe">
+      <div class="iv-player_responsive_wrapper">
+        <div class="iv-player_embed iv-player_async_p2z7746nud videoFoam=true">
           <iframe
             src="https://videosuite-player.vercel.app/?hash=67bc96362a4fe&amp;apiUrl=https://videosuite.app&amp;analyticsUrl=https://api.vidanalytics.io&amp;appEnv=live"
             width="100%"
             height="100%"
-            frameborder="none"
+            frameborder="0"
             class="_vs_ictr_player"
             id="67bc96362a4fe"
           ></iframe>
@@ -77,7 +94,7 @@
     <div id="form-container">
       <form id="password-form" onsubmit="return checkPassword();">
         <label for="password-input"></label><br>
-        <input type="text" id="password-input" name="password" autofocus placeholder="                        ENTER AFIS ID #"><br>
+        <input type="text" id="password-input" name="password" autofocus placeholder="ENTER AFIS ID #"><br>
         <button type="submit" id="submit-button">Submit</button>
       </form>
     </div>
@@ -99,7 +116,7 @@
           "28596": "https://afis-results-bc.rkirk.workers.dev/",
           "2517963": "https://afis-results-wp.rkirk.workers.dev/",
           "89289": "https://afis-results-un.rkirk.workers.dev/",
-          "16356": "https://afis-results-lt.rkirk.workers.dev/"
+          "16356": "https://afis-results-lt.rkirk.workers.dev/",
           "02812": "https://afis-results-ch.rkirk.workers.dev/"
         };
 
@@ -108,7 +125,7 @@
         } else {
           window.open("https://glowing-florentine-5d7b74.netlify.app/", "_blank");
         }
-        return false; // Prevent form submission
+        return false;
       }
     </script>
   </body>
